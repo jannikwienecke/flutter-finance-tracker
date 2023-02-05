@@ -1,0 +1,46 @@
+name: notes
+description: Iphone Notes Clone
+version: 1.0.0+1
+publish_to: none
+
+environment:
+  sdk: ">=2.18.0 <3.0.0"
+  flutter: 3.3.10
+
+dependencies:
+  bloc: ^8.1.0
+  blurrycontainer: ^1.0.2
+  dartz: ^0.10.1
+  dio: ^4.0.6
+  equatable: ^2.0.5
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^8.1.1
+
+  flutter_localizations:
+    sdk: flutter
+  freezed: ^2.3.2
+  go_router: ^6.0.1
+  hooks_riverpod: ^2.1.3
+  intl: ^0.17.0
+  pub_api_client: ^2.2.1
+  rxdart: ^0.27.7
+  shimmer: ^2.0.0
+  uuid: ^3.0.7
+
+dev_dependencies:
+  bloc_test: ^9.1.0
+  flutter_test:
+    sdk: flutter
+  mocktail: ^0.3.0
+  very_good_analysis: ^3.1.0
+  build_runner:
+  riverpod_generator: ^1.1.1
+
+flutter:
+  uses-material-design: true
+  generate: true
+
+  assets:
+    # Add all product images
+    - assets/products/
