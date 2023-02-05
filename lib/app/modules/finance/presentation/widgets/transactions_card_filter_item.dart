@@ -23,7 +23,7 @@ class TransactionCardFilterItem extends StatelessWidget {
         ),
         decoration: BoxDecoration(
           color: isSelected
-              ? Theme.of(context).colorScheme.primaryContainer
+              ? Theme.of(context).colorScheme.tertiaryContainer
               : Colors.transparent,
           borderRadius: BorderRadius.circular(6),
           border: Border.all(
