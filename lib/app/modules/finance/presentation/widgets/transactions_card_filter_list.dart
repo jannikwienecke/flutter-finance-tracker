@@ -31,7 +31,9 @@ class TransactionsListFilterList extends StatelessWidget {
               ),
               child: TransactionCardFilterItem(
                 text: _filterItems[index],
-                onTap: () {},
+                onTap: () {
+                  print('Filter item tapped');
+                },
                 isSelected: index == 2,
               ),
             );

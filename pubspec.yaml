@@ -4,8 +4,8 @@ version: 1.0.0+1
 publish_to: none
 
 environment:
-  sdk: ">=2.18.0 <3.0.0"
-  flutter: 3.3.10
+  sdk: ">=2.19.0 <3.0.0"
+  flutter: 3.7.0
 
 dependencies:
   bloc: ^8.1.0
@@ -15,6 +15,7 @@ dependencies:
   equatable: ^2.0.5
   flutter:
     sdk: flutter
+  flutter_animate: ^3.1.0
   flutter_bloc: ^8.1.1
 
   flutter_localizations:
@@ -30,12 +31,13 @@ dependencies:
 
 dev_dependencies:
   bloc_test: ^9.1.0
+  build_runner:
+  flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
   mocktail: ^0.3.0
-  very_good_analysis: ^3.1.0
-  build_runner:
   riverpod_generator: ^1.1.1
+  very_good_analysis: ^3.1.0
 
 flutter:
   uses-material-design: true

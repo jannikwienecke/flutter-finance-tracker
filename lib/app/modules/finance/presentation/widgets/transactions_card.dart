@@ -14,12 +14,10 @@ class TransactionsCard extends StatelessWidget {
       child: Center(
         child: Container(
           height: 300,
-          width: 360,
+          width: MediaQuery.of(context).size.width - 25,
           decoration: BoxDecoration(
-            color: Theme.of(context)
-                .colorScheme
-                .secondaryContainer
-                .withOpacity(.6),
+            color:
+                Theme.of(context).colorScheme.secondaryContainer.withOpacity(1),
             borderRadius: BorderRadius.circular(8),
           ),
           child: Padding(
@@ -48,5 +46,19 @@ class TransactionsCard extends StatelessWidget {
         ),
       ),
     );
+
+    // return SizedBox(
+    //   height: 300,
+    //   width: MediaQuery.of(context).size.width,
+    //   child: ClipRRect(
+    //     child: BackdropFilter(
+    //       filter: ImageFilter.blur(
+    //         sigmaX: 40,
+    //         sigmaY: 40,
+    //       ),
+    //       child: const SummaryCard(),
+    //     ),
+    //   ),
+    // );
   }
 }

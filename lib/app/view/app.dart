@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:notes/app/modules/finance/presentation/controller/dashboard_controller_handler.dart';
 import 'package:notes/app/modules/finance/presentation/widgets/dashboard_controller.dart';
 import 'package:notes/app/view/color_schemes.g.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -49,37 +50,32 @@ class Home extends ConsumerWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final dashboardControllerNotifier =
+        ref.read(dashboardControllerHandlerProvider.notifier);
+    final dashboardState = ref.watch(dashboardControllerHandlerProvider);
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: const SafeArea(
-        child: DashboardController(),
-      ),
+      body: const DashboardController(),
+
       // multiple floating action buttons
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          // toggle dark mode
           FloatingActionButton(
-            onPressed: () => {
-              ref.read(themeStateProvider.notifier).toggleThemeMode(),
-            },
-            tooltip: 'Toggle Dark Mode',
-            backgroundColor: Theme.of(context).colorScheme.tertiaryContainer,
+            onPressed: dashboardControllerNotifier.toggleShowCommandbar,
             child: Icon(
-              Icons.brightness_4,
-              color: Theme.of(context).colorScheme.onTertiaryContainer,
+              dashboardState.showCommandbar ? Icons.close : Icons.search,
             ),
           ),
           const SizedBox(height: 10),
-          FloatingActionButton.extended(
-            onPressed: () {},
-            label: const Text('Transaction'),
-            icon: Icon(
-              Icons.add,
-              color: Theme.of(context).colorScheme.onPrimaryContainer,
+          if (!dashboardState.showCommandbar)
+            FloatingActionButton.extended(
+              onPressed: () {},
+              label: const Text('Add Expense'),
+              backgroundColor: Theme.of(context).colorScheme.tertiaryContainer,
             ),
-          ),
         ],
       ),
     );

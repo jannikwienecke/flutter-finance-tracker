@@ -1,73 +1,70 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:notes/app/modules/finance/presentation/command_bar_screen.dart';
+import 'package:notes/app/modules/finance/presentation/constants.dart';
+import 'package:notes/app/modules/finance/presentation/controller/dashboard_controller_handler.dart';
 import 'package:notes/app/modules/finance/presentation/dashboard_screen.dart';
+import 'package:notes/app/modules/finance/presentation/widgets/color_circle.dart';
 
-class DashboardController extends HookWidget {
+class DashboardController extends HookConsumerWidget {
   const DashboardController({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final focusNode = useFocusNode();
 
-    final started = useState(false);
-    final totalDeltaY = useState(0);
-    final opacity = useState<double>(1);
+    final dashboardState = ref.watch(dashboardControllerHandlerProvider);
+    final globalAppStateNotifier =
+        ref.read(dashboardControllerHandlerProvider.notifier);
 
-    double interpolateTotalDeltaYToOpacity(int totalDeltaY) {
-      final opacity = 1 - (totalDeltaY / 150);
-      if (opacity < 0) {
-        return 0;
-      } else if (opacity > 1) {
-        return 1;
-      } else {
-        return opacity;
-      }
-    }
+    final showCommandbar = dashboardState.showCommandbar;
+
+    final handlePanDown = globalAppStateNotifier.handlePanDown;
+    final handlePanUpdate = globalAppStateNotifier.handlePanUpdate;
+    final handlePanEnd = globalAppStateNotifier.handlePanEnd;
+
+    final opacity = dashboardState.opacity;
+    final totalDeltaY = dashboardState.totalDeltaY;
 
     useEffect(
       () {
-        if (totalDeltaY.value > 130) {
+        if (dashboardState.totalDeltaY > 130) {
           focusNode.requestFocus();
-        } else if (totalDeltaY.value < 130) {
+        } else if (dashboardState.totalDeltaY < 130) {
           focusNode.unfocus();
         }
         return null;
       },
       // when the stream changes, useEffect will call the callback again.
-      [totalDeltaY.value],
+      [dashboardState.totalDeltaY],
     );
 
-    void handlePanEnd(DragEndDetails _) {
-      if (totalDeltaY.value < 150) {
-        started.value = false;
-        totalDeltaY.value = 0;
-        opacity.value = 1;
-      }
-    }
-
-    void handlePanUpdate(DragUpdateDetails details) {
-      final totalDelya = details.delta.dy.toInt() + totalDeltaY.value;
-
-      if (totalDelya < 0) {
-        totalDeltaY.value = 0;
-      } else if (totalDelya > 150) {
-        totalDeltaY.value = 150;
-      } else {
-        totalDeltaY.value = totalDelya;
-      }
-
-      opacity.value = interpolateTotalDeltaYToOpacity(totalDeltaY.value);
-    }
-
-    void handlePanDown(DragDownDetails _) {
-      started.value = !started.value;
-    }
-
-    const duration = Duration(milliseconds: 300);
+    final duration = CBConfig.animationDuration;
 
     return Stack(
       children: [
+        ColorCircle(
+          color:
+              Theme.of(context).colorScheme.primaryContainer.withOpacity(0.9),
+          top: 110,
+          left: -50,
+          size: 180,
+        ),
+        ColorCircle(
+          color: Theme.of(context).colorScheme.tertiaryContainer,
+          top: 0,
+          left: 200,
+          size: 200,
+        ),
+
+        // CommandBarScreen(
+        //   totalDeltaY: totalDeltaY,
+        //   opacity: opacity,
+        //   focusNode: focusNode,
+        //   duration: duration,
+        // )
+
         GestureDetector(
           onPanDown: handlePanDown,
           onPanUpdate: handlePanUpdate,
@@ -82,12 +79,14 @@ class DashboardController extends HookWidget {
           onPanDown: handlePanDown,
           onPanUpdate: handlePanUpdate,
           onPanEnd: handlePanEnd,
-          child: CommandBarScreen(
-            totalDeltaY: totalDeltaY,
-            opacity: opacity,
-            focusNode: focusNode,
-            duration: duration,
-          ),
+          child: showCommandbar
+              ? CommandBarScreen(
+                  totalDeltaY: totalDeltaY,
+                  opacity: opacity,
+                  focusNode: focusNode,
+                  duration: duration,
+                )
+              : const Text(''),
         ),
       ],
     );
