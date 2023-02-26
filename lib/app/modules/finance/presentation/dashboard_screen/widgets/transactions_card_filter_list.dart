@@ -20,7 +20,7 @@ class TransactionsListFilterList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: SizedBox(
-        height: 25,
+        height: 30,
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: _filterItems.length,

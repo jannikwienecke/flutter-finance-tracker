@@ -25,7 +25,7 @@ class TransactionsListSearchItem extends StatelessWidget {
         child: Icon(
           Icons.search,
           color: Theme.of(context).colorScheme.onSecondaryContainer,
-          size: 12,
+          size: 16,
         ),
       ),
     );

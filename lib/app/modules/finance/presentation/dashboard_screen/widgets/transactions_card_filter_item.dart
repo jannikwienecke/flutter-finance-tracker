@@ -14,41 +14,35 @@ class TransactionCardFilterItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.tertiaryContainer,
-        borderRadius: BorderRadius.circular(6),
-        border: Border.all(
-          color: !isSelected
+    return TextButton(
+      onPressed: onTap,
+      style: TextButton.styleFrom(
+        padding: const EdgeInsets.all(2),
+        textStyle: const TextStyle(fontSize: 12),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+          side: BorderSide(
+            width: .5,
+            color: isSelected
+                ? Theme.of(context).colorScheme.primary
+                : Colors.transparent,
+          ),
+        ),
+        backgroundColor:
+            Theme.of(context).colorScheme.tertiaryContainer.withOpacity(.5),
+      ),
+      child: Text(
+        text,
+        style: TextStyle(
+          color: isSelected
               ? Theme.of(
                   context,
-                ).colorScheme.onSecondary.withOpacity(.4)
+                ).colorScheme.onPrimaryContainer
               : Theme.of(
                   context,
-                ).colorScheme.primary,
+                ).colorScheme.onSecondaryContainer,
         ),
-      ),
-      child: TextButton(
-        onPressed: onTap,
-        style: TextButton.styleFrom(
-          padding: const EdgeInsets.all(1),
-          backgroundColor:
-              Theme.of(context).colorScheme.tertiaryContainer.withOpacity(.5),
-        ),
-        child: Text(
-          text,
-          style: TextStyle(
-            fontSize: 10,
-            color: isSelected
-                ? Theme.of(
-                    context,
-                  ).colorScheme.onPrimaryContainer
-                : Theme.of(
-                    context,
-                  ).colorScheme.onSecondaryContainer,
-          ),
-          // ),
-        ),
+        // ),
       ),
     );
   }

@@ -113,7 +113,7 @@ class CurrentBalanceDisplay extends StatelessWidget {
     return Row(
       children: [
         Text(
-          r'$' '$balance',
+          '$balance' '€',
           style: GoogleFonts.robotoMono(
             fontSize: 30,
             fontWeight: FontWeight.w500,
