@@ -20,25 +20,25 @@ class Product extends Equatable {
   final String description;
   final int availableQuantity;
 
-  // @override
-  // List<Object> get props =>
-  //     [title, price, id, imageUrl, description, availableQuantity];
+  @override
+  List<Object> get props =>
+      [title, price, id, imageUrl, description, availableQuantity];
 
-  // Product copyWith({
-  //   required String? title,
-  //   required double? price,
-  //   required String? id,
-  //   required String? imageUrl,
-  //   required String? description,
-  //   required int? availableQuantity,
-  // }) {
-  //   return Product(
-  //     title: title ?? this.title,
-  //     price: price ?? this.price,
-  //     id: this.id,
-  //     imageUrl: this.imageUrl,
-  //     description: this.description,
-  //     availableQuantity: this.availableQuantity,
-  //   );
-  // }
+  Product copyWith({
+    required String? title,
+    required double? price,
+    required String? id,
+    required String? imageUrl,
+    required String? description,
+    required int? availableQuantity,
+  }) {
+    return Product(
+      title: title ?? this.title,
+      price: price ?? this.price,
+      id: this.id,
+      imageUrl: this.imageUrl,
+      description: this.description,
+      availableQuantity: this.availableQuantity,
+    );
+  }
 }

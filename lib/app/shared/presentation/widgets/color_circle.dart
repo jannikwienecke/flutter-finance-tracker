@@ -17,13 +17,9 @@ class ColorCircle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      // top: -50,
-      // left: 250,
       top: top,
       left: left,
       child: Container(
-        // height: 250,
-        // width: 250,
         height: size,
         width: size,
         decoration: BoxDecoration(

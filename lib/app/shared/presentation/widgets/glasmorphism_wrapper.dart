@@ -1,12 +1,14 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:notes/app/modules/finance/presentation/widgets/summary_card.dart';
 
 class GlasmorphismWrapper extends StatelessWidget {
   const GlasmorphismWrapper({
     super.key,
+    required this.child,
   });
+
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +20,8 @@ class GlasmorphismWrapper extends StatelessWidget {
             sigmaX: 40,
             sigmaY: 40,
           ),
-          child: const Center(
-            child: SummaryCard(),
+          child: Center(
+            child: child,
           ),
         ),
       ),

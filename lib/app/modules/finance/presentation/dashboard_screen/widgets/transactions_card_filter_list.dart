@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:notes/app/modules/finance/presentation/widgets/transactions_card_filter_item.dart';
+import 'package:notes/app/modules/finance/presentation/dashboard_screen/widgets/transactions_card_filter_item.dart';
 
 const List<String> _filterItems = [
   'All',

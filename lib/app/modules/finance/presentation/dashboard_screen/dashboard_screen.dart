@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:notes/app/modules/finance/presentation/widgets/glasmorphism_wrapper.dart';
-import 'package:notes/app/modules/finance/presentation/widgets/transactions_card.dart';
+import 'package:notes/app/modules/finance/presentation/dashboard_screen/widgets/summary_card.dart';
+import 'package:notes/app/modules/finance/presentation/dashboard_screen/widgets/transactions_card.dart';
+import 'package:notes/app/shared/presentation/widgets/widgets.dart';
 
-class DashBoardScreen extends StatelessWidget {
-  const DashBoardScreen({
+class DashboardScreen extends StatelessWidget {
+  const DashboardScreen({
     super.key,
     required this.opacity,
     required this.totalDeltaY,
@@ -41,10 +42,12 @@ class DashBoardScreen extends StatelessWidget {
                             Positioned(
                               top: 20,
                               left: 0,
-                              child: GlasmorphismWrapper(),
+                              child: GlasmorphismWrapper(
+                                child: SummaryCard(),
+                              ),
                             ),
                             Positioned(
-                              top: 220,
+                              top: 240,
                               left: 0,
                               child: TransactionsCard(),
                             ),

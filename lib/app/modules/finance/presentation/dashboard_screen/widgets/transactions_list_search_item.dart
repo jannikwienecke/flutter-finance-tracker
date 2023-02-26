@@ -19,7 +19,7 @@ class TransactionsListSearchItem extends StatelessWidget {
           border: Border.all(
             color: Theme.of(
               context,
-            ).colorScheme.onSecondaryContainer,
+            ).colorScheme.onSecondaryContainer.withOpacity(.4),
           ),
         ),
         child: Icon(

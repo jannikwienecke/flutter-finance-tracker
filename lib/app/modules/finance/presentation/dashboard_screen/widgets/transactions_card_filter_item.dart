@@ -14,23 +14,26 @@ class TransactionCardFilterItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 8,
-          vertical: 4,
+    return Container(
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.tertiaryContainer,
+        borderRadius: BorderRadius.circular(6),
+        border: Border.all(
+          color: !isSelected
+              ? Theme.of(
+                  context,
+                ).colorScheme.onSecondary.withOpacity(.4)
+              : Theme.of(
+                  context,
+                ).colorScheme.primary,
         ),
-        decoration: BoxDecoration(
-          color: isSelected
-              ? Theme.of(context).colorScheme.tertiaryContainer
-              : Colors.transparent,
-          borderRadius: BorderRadius.circular(6),
-          border: Border.all(
-            color: Theme.of(
-              context,
-            ).colorScheme.onSecondaryContainer,
-          ),
+      ),
+      child: TextButton(
+        onPressed: onTap,
+        style: TextButton.styleFrom(
+          padding: const EdgeInsets.all(1),
+          backgroundColor:
+              Theme.of(context).colorScheme.tertiaryContainer.withOpacity(.5),
         ),
         child: Text(
           text,
@@ -44,6 +47,7 @@ class TransactionCardFilterItem extends StatelessWidget {
                     context,
                   ).colorScheme.onSecondaryContainer,
           ),
+          // ),
         ),
       ),
     );

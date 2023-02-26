@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:notes/app/modules/finance/presentation/controller/dashboard_controller_handler.dart';
-import 'package:notes/app/modules/finance/presentation/widgets/dashboard_controller.dart';
+import 'package:notes/app/modules/finance/presentation/dashboard_controller_screen/dashboard_controller.dart';
 import 'package:notes/app/view/color_schemes.g.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -35,7 +36,11 @@ class App extends ConsumerWidget {
 
     return ProviderScope(
       child: MaterialApp(
-        theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
+        theme: ThemeData(
+          useMaterial3: true,
+          colorScheme: lightColorScheme,
+          textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme),
+        ),
         darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
         themeMode: themeState,
         home: const Home(),

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:notes/app/modules/finance/presentation/command_bar_screen.dart';
+import 'package:notes/app/modules/finance/presentation/command_bar_screen/command_bar_screen.dart';
 import 'package:notes/app/modules/finance/presentation/constants.dart';
 import 'package:notes/app/modules/finance/presentation/controller/dashboard_controller_handler.dart';
-import 'package:notes/app/modules/finance/presentation/dashboard_screen.dart';
-import 'package:notes/app/modules/finance/presentation/widgets/color_circle.dart';
+import 'package:notes/app/modules/finance/presentation/dashboard_screen/dashboard_screen.dart';
+import 'package:notes/app/shared/presentation/widgets/widgets.dart';
 
 class DashboardController extends HookConsumerWidget {
   const DashboardController({super.key});
@@ -69,7 +69,7 @@ class DashboardController extends HookConsumerWidget {
           onPanDown: handlePanDown,
           onPanUpdate: handlePanUpdate,
           onPanEnd: handlePanEnd,
-          child: DashBoardScreen(
+          child: DashboardScreen(
             totalDeltaY: totalDeltaY,
             opacity: opacity,
             duration: duration,

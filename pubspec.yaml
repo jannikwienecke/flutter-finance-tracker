@@ -17,11 +17,11 @@ dependencies:
     sdk: flutter
   flutter_animate: ^3.1.0
   flutter_bloc: ^8.1.1
-
   flutter_localizations:
     sdk: flutter
   freezed: ^2.3.2
   go_router: ^6.0.1
+  google_fonts: ^4.0.3
   hooks_riverpod: ^2.1.3
   intl: ^0.17.0
   pub_api_client: ^2.2.1
@@ -31,7 +31,7 @@ dependencies:
 
 dev_dependencies:
   bloc_test: ^9.1.0
-  build_runner:
+  build_runner: null
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter

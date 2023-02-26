@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:notes/app/modules/finance/presentation/widgets/transactions_card_filter_list.dart';
-import 'package:notes/app/modules/finance/presentation/widgets/transactions_list_search_item.dart';
+import 'package:notes/app/modules/finance/presentation/dashboard_screen/widgets/transactions_card_filter_list.dart';
+import 'package:notes/app/modules/finance/presentation/dashboard_screen/widgets/transactions_list_search_item.dart';
 
 class TransactionsCard extends StatelessWidget {
   const TransactionsCard({

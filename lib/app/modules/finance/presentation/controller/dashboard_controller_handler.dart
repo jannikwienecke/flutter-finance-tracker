@@ -1,3 +1,4 @@
+
 import 'dart:async';
 
 import 'package:equatable/equatable.dart';
@@ -58,8 +59,6 @@ class DashboardControllerHandler extends _$DashboardControllerHandler {
         totalDeltaY: 0,
         started: false,
       );
-
-// intervall
     } else {
       state = state.copyWith(
         showCommandbar: true,
@@ -70,7 +69,6 @@ class DashboardControllerHandler extends _$DashboardControllerHandler {
 
       final timer = Timer.periodic(const Duration(milliseconds: 5), (timer) {
         if (state.opacity - 0.0333 <= 0) {
-          print('totalDeltaY: ${state.totalDeltaY} ${state.opacity}}');
           timer.cancel();
           return;
         }
