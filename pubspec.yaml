@@ -11,7 +11,7 @@ dependencies:
   bloc: ^8.1.0
   blurrycontainer: ^1.0.2
   dartz: ^0.10.1
-  dio: ^4.0.6
+  dio: ^5.1.0
   equatable: ^2.0.5
   flutter:
     sdk: flutter
