@@ -16,7 +16,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_animate: ^3.1.0
-  flutter_bloc: ^8.1.1
+  flutter_bloc: ^8.1.3
   flutter_localizations:
     sdk: flutter
   flutter_slidable: ^2.0.0
